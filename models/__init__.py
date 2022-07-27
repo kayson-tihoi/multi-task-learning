@@ -4,6 +4,8 @@ from .resnet import seresnet12
 from .wresnet import wrn_28_10
 
 from .resnet_new import resnet50
+from .modified_resnet import modified_resnet18, modified_resnet34
+
 
 model_pool = [
     'convnet4',
@@ -18,4 +20,6 @@ model_dict = {
     'resnet12': resnet12,
     'seresnet12': seresnet12,
     'resnet50': resnet50,
+    'modified_resnet18': modified_resnet18,
+    'modified_resnet34': modified_resnet34,
 }

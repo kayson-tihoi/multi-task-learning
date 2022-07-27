@@ -1,12 +1,14 @@
 from __future__ import print_function
 
-
 from . import model_dict
+
+
 dataset_names = [
     'mini-imagenet',
     'tiered-imagenet',
     'fc100',
     'cifarfs']
+
 
 def create_model(name, n_cls, dataset='mini-imagenet', drop_rate=0.1):
     assert dataset in dataset_names
@@ -22,6 +24,8 @@ def create_model(name, n_cls, dataset='mini-imagenet', drop_rate=0.1):
         elif name.startswith('wrn'):
             model = model_dict[name](num_classes=n_cls)
         elif name.startswith('convnet'):
+            model = model_dict[name](num_classes=n_cls)
+        elif name.startswith('modified'):
             model = model_dict[name](num_classes=n_cls)
         else:
             raise NotImplementedError('model {} not supported in dataset {}:'.format(name, dataset))

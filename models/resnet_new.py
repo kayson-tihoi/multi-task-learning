@@ -3,7 +3,9 @@ import torch.nn as nn
 import math
 import torch.utils.model_zoo as model_zoo
 
+
 __all__ = ['ResNet', 'resnet50']
+
 
 model_urls = {
     'resnet18': 'https://download.pytorch.org/models/resnet18-5c106cde.pth',
