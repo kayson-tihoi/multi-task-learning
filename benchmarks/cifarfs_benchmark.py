@@ -54,7 +54,7 @@ def cifarfs_tasksets(
     train_dataset = l2l.vision.datasets.CIFARFS(root=root,
                                                 transform=train_data_transform,
                                                 mode='train',
-                                                download=True)
+                                                download=False)
     valid_dataset = l2l.vision.datasets.CIFARFS(root=root,
                                                 transform=test_data_transform,
                                                 mode='validation',

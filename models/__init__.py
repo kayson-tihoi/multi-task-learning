@@ -5,6 +5,7 @@ from .wresnet import wrn_28_10
 
 from .resnet_new import resnet50
 from .modified_resnet import modified_resnet18, modified_resnet34
+from .modified_resnet_cifar import modified_resnet20, modified_resnet32
 
 
 model_pool = [
@@ -22,4 +23,6 @@ model_dict = {
     'resnet50': resnet50,
     'modified_resnet18': modified_resnet18,
     'modified_resnet34': modified_resnet34,
+    'modified_resnet20': modified_resnet20,
+    'modified_resnet32': modified_resnet32,
 }
