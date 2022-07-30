@@ -12,15 +12,15 @@
 
 set -ex
 
-python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm mtl --dataset mini-imagenet --model modified_resnet34 
-python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm mtl --dataset mini-imagenet --model modified_resnet34 
-python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm mtl --dataset mini-imagenet --model modified_resnet34 
+python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm mtl --dataset mini-imagenet --epoch_length 50 --val_epoch_length 10 --model modified_resnet34 
+python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm mtl --dataset mini-imagenet --epoch_length 50 --val_epoch_length 10 --model modified_resnet34 
+python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm mtl --dataset mini-imagenet --epoch_length 50 --val_epoch_length 10 --model modified_resnet34 
 
-python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm mtl --dataset mini-imagenet --model modified_resnet34 
-python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm mtl --dataset mini-imagenet --model modified_resnet34 
-python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm mtl --dataset mini-imagenet --model modified_resnet34 
+python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm mtl --dataset mini-imagenet --epoch_length 50 --val_epoch_length 10 --model modified_resnet34 
+python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm mtl --dataset mini-imagenet --epoch_length 50 --val_epoch_length 10 --model modified_resnet34 
+python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm mtl --dataset mini-imagenet --epoch_length 50 --val_epoch_length 10 --model modified_resnet34 
 
-python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm mtl --dataset mini-imagenet --model modified_resnet34 
-python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm mtl --dataset mini-imagenet --model modified_resnet34 
-python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm mtl --dataset mini-imagenet --model modified_resnet34 
+python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm mtl --dataset mini-imagenet --epoch_length 50 --val_epoch_length 10 --model modified_resnet34 
+python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm mtl --dataset mini-imagenet --epoch_length 50 --val_epoch_length 10 --model modified_resnet34 
+python train.py --gpu 1 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm mtl --dataset mini-imagenet --epoch_length 50 --val_epoch_length 10 --model modified_resnet34 
 
