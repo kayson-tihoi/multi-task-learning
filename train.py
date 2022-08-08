@@ -78,6 +78,8 @@ def main():
     parser.add_argument('--test_log_dir',default='logs/finetune/',type=str)
     parser.add_argument('--trainval', default=False,action='store_true',help='Merge the original training and validation set for training, and validate on the test set.')
 
+    parser.add_argument('--image_size', default=84, type=int)
+
     args = parser.parse_args()
     modify_args(args) # modify args and the experiment name
 
@@ -113,7 +115,8 @@ def main():
         root=args.root,
         data_augmentation=data_augmentation,
         orig_label=orig_label,
-        trainval = args.trainval
+        trainval=args.trainval,
+        image_size=args.image_size,
     )
     episodic_data = EpisodicBatcher(
         tasksets.train,
