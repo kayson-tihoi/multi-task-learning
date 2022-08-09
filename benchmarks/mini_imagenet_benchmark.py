@@ -4,7 +4,7 @@ import learn2learn as l2l
 
 from learn2learn.data.transforms import NWays, KShots, LoadData, RemapLabels, ConsecutiveLabels
 from torchvision.transforms import (Compose, ToPILImage, ToTensor, RandomCrop, RandomHorizontalFlip,
-                                    ColorJitter, Normalize)
+                                    ColorJitter, Normalize, Resize)
 from datasets import MiniImagenet
 from torchvision import transforms
 import numpy as np
@@ -43,7 +43,8 @@ def mini_imagenet_tasksets(
         )
         train_data_transforms = Compose([
             lambda x: PIL.Image.fromarray(x.astype('uint8')),
-            RandomCrop(84, padding=8),
+            Resize(kwargs['image_size']),
+            RandomCrop(kwargs['image_size'], padding=8),
             ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4),
             RandomHorizontalFlip(),
             # lambda x: np.asarray(x),
@@ -52,6 +53,7 @@ def mini_imagenet_tasksets(
         ])
         test_data_transforms = Compose([
             lambda x: PIL.Image.fromarray(x.astype('uint8')),
+            Resize(kwargs['image_size']),
             ToTensor(),
             normalize,
         ])
@@ -63,19 +65,24 @@ def mini_imagenet_tasksets(
         mode='train',
         transform=train_data_transforms,
         download=True,
+        image_size=kwargs['image_size']
     )
     valid_dataset = MiniImagenet(
         root=root,
         mode='validation',
         transform=test_data_transforms,
         download=True,
+        image_size=kwargs['image_size']
     )
     test_dataset = MiniImagenet(
         root=root,
         mode='test',
         transform=test_data_transforms,
         download=True,
+        image_size=kwargs['image_size']
     )
+
+    # import pdb; pdb.set_trace()
 
     if trainval:
 

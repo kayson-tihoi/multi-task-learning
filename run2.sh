@@ -26,22 +26,22 @@
 
 set -ex
 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm protonet --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm protonet --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm protonet --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm protonet --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm protonet --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm protonet --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm protonet --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm protonet --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm protonet --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet20 
 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
-python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm anil --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm maml --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm maml --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  1 --algorithm maml --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm maml --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm maml --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots  5 --algorithm maml --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm maml --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm maml --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 
+python train.py --gpu 2 --root ~/data --norm_train_features --meta_batch_size 2 --test_shots 10 --algorithm maml --epoch_length 50 --val_epoch_length 10 --dataset mini-imagenet --model modified_resnet32 

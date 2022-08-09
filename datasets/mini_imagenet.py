@@ -72,7 +72,8 @@ class MiniImagenet(data.Dataset):
                  mode='train',
                  transform=None,
                  target_transform=None,
-                 download=False):
+                 download=False,
+                 image_size=84):
         super(MiniImagenet, self).__init__()
         self.root = os.path.expanduser(root)
         if not os.path.exists(self.root):
@@ -117,6 +118,8 @@ class MiniImagenet(data.Dataset):
             # for idx in idxs:
                     # self.y[idx] = self.class_idx[class_name]
             self.y[idxs] = self.class_idx[class_name]
+
+        self.image_size = image_size
 
     def __getitem__(self, idx):
         data = self.x[idx]

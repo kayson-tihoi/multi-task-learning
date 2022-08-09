@@ -17,6 +17,7 @@ from learn2learn.algorithms import (
 from pytorch_lightning import loggers as pl_loggers
 from lightning_utils import EpisodicBatcher,NoLeaveProgressBar, TrackTestAccuracyCallback
 import os
+import numpy as np
 from lightning_mtl import LightningMTL
 from models.util import create_model
 import torch
@@ -28,6 +29,45 @@ dataset_names = {'mini-imagenet':'miniImageNet',
                  'tiered-imagenet':'tieredImageNet',
                  'cifarfs':'CIFAR-FS',
                  'fc100':'FC100'}
+
+
+import os
+import sys
+import logging
+import functools
+from termcolor import colored
+
+
+@functools.lru_cache()
+def create_logger(output_dir, dist_rank=0, name=''):
+    # create logger
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.DEBUG)
+    logger.propagate = False
+
+    # create formatter
+    fmt = '[%(asctime)s %(name)s] (%(filename)s %(lineno)d): %(levelname)s %(message)s'
+    color_fmt = colored('[%(asctime)s %(name)s]', 'green') + \
+                colored('(%(filename)s %(lineno)d)', 'yellow') + ': %(levelname)s %(message)s'
+
+    # create console handlers for master process
+    if dist_rank == 0:
+        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler.setLevel(logging.INFO)
+        console_handler.setFormatter(
+            logging.Formatter(fmt=color_fmt, datefmt='%Y-%m-%d %H:%M:%S'))
+        logger.addHandler(console_handler)
+
+    # create file handlers
+    file_handler = logging.FileHandler(os.path.join(output_dir, f'log_rank{dist_rank}.txt'), mode='a')
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(logging.Formatter(fmt=fmt, datefmt='%Y-%m-%d %H:%M:%S'))
+    logger.addHandler(file_handler)
+
+    return logger
+
+
+
 def main():
     parser = ArgumentParser(conflict_handler="resolve", add_help=True)
     # add model and trainer specific args
@@ -175,6 +215,8 @@ def main():
         )
         logger.log_hyperparams(dict_args)
 
+        new_logger = create_logger(args.log_dir)
+
     # We use early stopping in this project
     early_stopping_callback = pl.callbacks.EarlyStopping(
         monitor='valid_accuracy',min_delta=0.0,patience=args.stop_patience,verbose=False,mode='max')
@@ -216,14 +258,35 @@ def main():
     # -----Testing stage-------
     algorithm.test_phase = True
     # Define the test set
-    test_episodic_data = EpisodicBatcher(
-        tasksets.test,tasksets.test,tasksets.test,
-        epoch_length= args.final_test_epoch_length, # 2000 tasks for test
+    # test_episodic_data = EpisodicBatcher(
+    #     tasksets.test,tasksets.test,tasksets.test,
+    #     epoch_length= args.final_test_epoch_length, # 2000 tasks for test
+    # )
+    # # Evaluate on the test set.
+    # test_result = trainer.test(model=algorithm,ckpt_path="best",datamodule=test_episodic_data)
+    # test_acc = test_result[0]['test_accuracy']
+    accs = []
+    iter_num = 50
+    for _ in range(iter_num):
+        final_test_epoch_length = 1
+        test_episodic_data = EpisodicBatcher(
+            tasksets.test,tasksets.test,tasksets.test,
+            epoch_length=final_test_epoch_length, # 2000 tasks for test
+        )
+        # Evaluate on the test set.
+        test_result = trainer.test(model=algorithm,ckpt_path="best",datamodule=test_episodic_data)
+        test_acc = test_result[0]['test_accuracy']
+
+        accs.append(test_acc)
+    # print(f'Test Accuracy = {round(test_acc*100,2)}%')
+    accs = np.asarray(accs) * 100
+    acc_mean = np.mean(accs)
+    acc_std = np.std(accs)
+    new_logger.info(
+        '%d Test Acc = %4.2f%% +- %4.2f%%' % (iter_num, acc_mean, 1.96 * acc_std / np.sqrt(iter_num))
     )
-    # Evaluate on the test set.
-    test_result = trainer.test(model=algorithm,ckpt_path="best",datamodule=test_episodic_data)
-    test_acc = test_result[0]['test_accuracy']
-    print(f'Test Accuracy = {round(test_acc*100,2)}%')
+
+
 
 if __name__ == "__main__":
     main()
