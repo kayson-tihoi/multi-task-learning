@@ -58,11 +58,11 @@ def cifarfs_tasksets(
     valid_dataset = l2l.vision.datasets.CIFARFS(root=root,
                                                 transform=test_data_transform,
                                                 mode='validation',
-                                                download=True)
+                                                download=False)
     test_dataset = l2l.vision.datasets.CIFARFS(root=root,
                                                transform=test_data_transform,
                                                mode='test',
-                                               download=True)
+                                               download=False)
     train_dataset = l2l.data.MetaDataset(train_dataset)
     valid_dataset = l2l.data.MetaDataset(valid_dataset)
     test_dataset = l2l.data.MetaDataset(test_dataset)

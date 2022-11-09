@@ -34,7 +34,7 @@ def create_model(name, n_cls, dataset='mini-imagenet', drop_rate=0.1):
             model = model_dict[name](avg_pool=True, drop_rate=drop_rate, dropblock_size=2, num_classes=n_cls)
         elif name.startswith('convnet'):
             model = model_dict[name](num_classes=n_cls)
-        elif name.startswith('modified'):
+        elif name.startswith('modified') or name.startswith('ours'):
             model = model_dict[name](num_classes=n_cls)
         else:
             raise NotImplementedError('model {} not supported in dataset {}:'.format(name, dataset))

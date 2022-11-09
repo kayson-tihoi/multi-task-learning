@@ -7,6 +7,10 @@ from .resnet_new import resnet50
 from .modified_resnet import modified_resnet18, modified_resnet34
 from .modified_resnet_cifar import modified_resnet20, modified_resnet32
 
+# for Boyu 
+from .individual_vgg import ours_vgg
+from .individual_resnet import ours_resnet
+
 
 model_pool = [
     'convnet4',
@@ -25,4 +29,7 @@ model_dict = {
     'modified_resnet34': modified_resnet34,
     'modified_resnet20': modified_resnet20,
     'modified_resnet32': modified_resnet32,
+
+    'ours_vgg': ours_vgg,
+    'ours_resnet': ours_resnet,
 }
